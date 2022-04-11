@@ -13,7 +13,7 @@ class TFSEStyles {
   );
 
   static const TextStyle menuCardStyle = TextStyle(
-      fontSize: 24.0,
+      fontSize: 22.0,
       color: Colors.white,
       letterSpacing: 1.1,
       fontWeight: FontWeight.bold
@@ -23,6 +23,18 @@ class TFSEStyles {
       fontSize: 34.0,
       color: Colors.white,
       letterSpacing: 1.1,
+      fontWeight: FontWeight.bold
+  );
+
+  static const TextStyle tableHeaderStyle = TextStyle(
+      fontSize: 14.0,
+      color: Colors.white,
+      fontWeight: FontWeight.bold
+  );
+
+  static const TextStyle tableContentStyle = TextStyle(
+      fontSize: 14.0,
+      color: TFSEColors.cardTextFieldColor,
       fontWeight: FontWeight.bold
   );
 

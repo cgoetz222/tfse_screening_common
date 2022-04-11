@@ -1,9 +1,15 @@
 import 'package:intl/intl.dart';
-import 'package:tfse_screening_common/data/model/pain.dart';
+import 'package:tfse_screening_common/data/model/screening_data.dart';
+import 'package:tfse_screening_common/data/model/user_status.dart';
 
 import '../../helper/bmi.dart';
 
 class User {
+  String dbKey = '';
+  String schoolYearDBKey = '';
+  String warmupsExerciseListID = '';
+  String mainWorkoutsExerciseListID = '';
+  String stretchingsExerciseListID = '';
   String name = '';
   String gender = '';
   DateTime birthday = DateTime.now();
@@ -17,37 +23,22 @@ class User {
   String specials = '';
   String equipment = '';
   int photos = 0;
-  int aims = 0;
-  bool painFree = true;
-  List painDataItems = List.empty(growable: true);
-  int dailyActivity = 0;
-  int numberOfSportsActivities = 0;
-  int numberOfStepsPerDay = 0;
-  int fba = 0;
-  int stretchOverHead = 0;
-  int kneeling = 0;
-  int shoulderFromWall = 0;
-  int skippingPause1 = 0;
-  int skippingPause2 = 0;
-  int skippingPause3 = 0;
-  int skippingFailureAttempts = 0;
-  int kneeBend = 0;
-  int plank = 0;
-  int pushup = 0;
-  int blackJeff = 0;
-  int situps = 0;
-  int dips = 0;
+  ScreeningData screeningData;
+  UserStatus userStatus;
 
-  User(this.name, this.gender, this.birthday, this.height, this.weight,
+
+  User(this.dbKey, this.schoolYearDBKey, this.warmupsExerciseListID, this.mainWorkoutsExerciseListID, this.stretchingsExerciseListID,
+      this.name, this.gender, this.birthday, this.height, this.weight,
       this.abdominalGirth, this.bicepsLGirth, this.bicepsRGirth, this.femoralLGirth, this.femoralRGirth,
-      this.specials, this.equipment, this.photos,
-      this.aims, this.painFree, this.painDataItems,
-      this.dailyActivity, this.numberOfSportsActivities, this.numberOfStepsPerDay,
-      this.fba, this.stretchOverHead, this.kneeling, this.shoulderFromWall,
-      this.skippingPause1, this.skippingPause2, this.skippingPause3, this.skippingFailureAttempts,
-      this.kneeBend, this.plank, this.pushup, this.blackJeff, this.situps, this.dips);
+      this.specials, this.equipment, this.photos, this.screeningData, this.userStatus
+      );
 
-  factory User.fromJson(Map<String, dynamic> json) {
+  factory User.fromJson(String dbKey, Map<String, dynamic> json) {
+    String dbKeyLocal;
+    final String schoolYearDBKey;
+    final String warmupsExerciseListID;
+    final String mainWorkoutsExerciseListID;
+    final String stretchingsExerciseListID;
     final String name;
     final String gender;
     final DateTime birthday;
@@ -61,27 +52,34 @@ class User {
     final String specials;
     final String equipment;
     final int photos;
-    final int aims;
-    final bool painFree;
-    final List<Pain> painDataItems;
-    final int dailyActivity;
-    final int numberOfSportsActivities;
-    final int numberOfStepsPerDay;
-    final int fba;
-    final int stretchOverHead;
-    final int kneeling;
-    final int shoulderFromWall;
-    final int skippingPause1;
-    final int skippingPause2;
-    final int skippingPause3;
-    final int skippingFailureAttempts;
-    final int kneeBend;
-    final int plank;
-    final int pushup;
-    final int blackJeff;
-    final int situps;
-    final int dips;
+    final ScreeningData screeningData;
+    final UserStatus userStatus;
 
+    if(json['dbKey'] != null) {
+      dbKeyLocal = json['dbKey'] as String;
+    } else {
+      dbKeyLocal = '';
+    }
+    if(json['schoolYearDBKey'] != null) {
+      schoolYearDBKey = json['schoolYearDBKey'] as String;
+    } else {
+      schoolYearDBKey = '';
+    }
+    if(json['warmupsExerciseListID'] != null) {
+      warmupsExerciseListID = json['warmupsExerciseListID'] as String;
+    } else {
+      warmupsExerciseListID = '';
+    }
+    if(json['mainWorkoutsExerciseListID'] != null) {
+      mainWorkoutsExerciseListID = json['mainWorkoutsExerciseListID'] as String;
+    } else {
+      mainWorkoutsExerciseListID = '';
+    }
+    if(json['stretchingsExerciseListID'] != null) {
+      stretchingsExerciseListID = json['stretchingsExerciseListID'] as String;
+    } else {
+      stretchingsExerciseListID = '';
+    }
     if(json['name'] != null) {
       name = json['name'] as String;
     } else {
@@ -147,109 +145,27 @@ class User {
     } else {
       photos = 0;
     }
-    if(json['aims'] != null) {
-      aims = json['aims'] as int;
+    if(json['screeningData'] != null) {
+      screeningData = ScreeningData.fromJson(json['screeningData']);
     } else {
-      aims = 0;
+      screeningData = ScreeningData(0, true, [], 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
     }
-    if(json['painFree'] != null) {
-      painFree = json['painFree'] as bool;
+    if(json['userStatus'] != null) {
+      userStatus = UserStatus.fromJson(json['userStatus']);
     } else {
-      painFree = false;
+      userStatus = UserStatus(false, false, DateTime.now(), DateTime.now(), DateTime.now());
     }
-    if (json['painItems'] != null) {
-      var painObjsJson = json['painItems'] as List;
-      painDataItems = painObjsJson.map((painJson) => Pain.fromJson(painJson)).toList();
-    } else {
-      painDataItems = [];
-    }
-    if(json['dailyActivity'] != null) {
-      dailyActivity = json['dailyActivity'] as int;
-    } else {
-      dailyActivity = 0;
-    }
-    if(json['numberOfSportsActivities'] != null) {
-      numberOfSportsActivities = json['numberOfSportsActivities'] as int;
-    } else {
-      numberOfSportsActivities = 0;
-    }
-    if(json['numberOfStepsPerDay'] != null) {
-      numberOfStepsPerDay = json['numberOfStepsPerDay'] as int;
-    } else {
-      numberOfStepsPerDay = 0;
-    }
-    if(json['fba'] != null) {
-      fba = json['fba'] as int;
-    } else {
-      fba = 0;
-    }
-    if(json['stretchOverHead'] != null) {
-      stretchOverHead = json['stretchOverHead'] as int;
-    } else {
-      stretchOverHead = 0;
-    }
-    if(json['kneeling'] != null) {
-      kneeling = json['kneeling'] as int;
-    } else {
-      kneeling = 0;
-    }
-    if(json['shoulderFromWall'] != null) {
-      shoulderFromWall = json['shoulderFromWall'] as int;
-    } else {
-      shoulderFromWall = 0;
-    }
-    if(json['skippingPause1'] != null) {
-      skippingPause1 = json['skippingPause1'] as int;
-    } else {
-      skippingPause1 = 0;
-    }
-    if(json['skippingPause2'] != null) {
-      skippingPause2 = json['skippingPause2'] as int;
-    } else {
-      skippingPause2 = 0;
-    }
-    if(json['skippingPause3'] != null) {
-      skippingPause3 = json['skippingPause3'] as int;
-    } else {
-      skippingPause3 = 0;
-    }
-    if(json['skippingFailureAttempts'] != null) {
-      skippingFailureAttempts = json['skippingFailureAttempts'] as int;
-    } else {
-      skippingFailureAttempts = 0;
-    }
-    if(json['kneeBend'] != null) {
-      kneeBend = json['kneeBend'] as int;
-    } else {
-      kneeBend = 0;
-    }
-    if(json['plank'] != null) {
-      plank = json['plank'] as int;
-    } else {
-      plank = 0;
-    }
-    if(json['pushup'] != null) {
-      pushup = json['pushup'] as int;
-    } else {
-      pushup = 0;
-    }
-    if(json['blackJeff'] != null) {
-      blackJeff = json['blackJeff'] as int;
-    } else {
-      blackJeff = 0;
-    }
-    if(json['situps'] != null) {
-      situps = json['situps'] as int;
-    } else {
-      situps = 0;
-    }
-    if(json['dips'] != null) {
-      dips = json['dips'] as int;
-    } else {
-      dips = 0;
+
+    if(dbKey.isNotEmpty) {
+      dbKeyLocal = dbKey;
     }
 
     return User(
+        dbKeyLocal,
+        schoolYearDBKey,
+        warmupsExerciseListID,
+        mainWorkoutsExerciseListID,
+        stretchingsExerciseListID,
         name,
         gender,
         birthday,
@@ -263,32 +179,18 @@ class User {
         specials,
         equipment,
         photos,
-        aims,
-        painFree,
-        painDataItems,
-        dailyActivity,
-        numberOfSportsActivities,
-        numberOfStepsPerDay,
-        fba,
-        stretchOverHead,
-        kneeling,
-        shoulderFromWall,
-        skippingPause1,
-        skippingPause2,
-        skippingPause3,
-        skippingFailureAttempts,
-        kneeBend,
-        plank,
-        pushup,
-        blackJeff,
-        situps,
-        dips
+        screeningData,
+        userStatus,
     );
   }
 
-  Map toJson() {
-    List? painItems = painDataItems != null ? painDataItems.map((i) => i.toJson()).toList() : null;
+  Map<String, dynamic> toJson() {
     return {
+      'dbKey': dbKey,
+      'schoolYearDBKey': schoolYearDBKey,
+      'warmupsExerciseListID': warmupsExerciseListID,
+      'mainWorkoutsExerciseListID': mainWorkoutsExerciseListID,
+      'stretchingsExerciseListID': stretchingsExerciseListID,
       'name': name,
       'gender': gender,
       'birthday': getBirthdayAsString(),
@@ -302,35 +204,9 @@ class User {
       'specials' : specials,
       'equipment' : equipment,
       'photos' : photos,
-      'aims': aims,
-      'painFree': painFree,
-      'painItems': painItems,
-      'dailyActivity' : dailyActivity,
-      'numberOfSportsActivities': numberOfSportsActivities,
-      'numberOfStepsPerDay': numberOfStepsPerDay,
-      'fba': fba,
-      'stretchOverHead': stretchOverHead,
-      'kneeling': kneeling,
-      'shoulderFromWall': shoulderFromWall,
-      'skippingPause1': skippingPause1,
-      'skippingPause2': skippingPause2,
-      'skippingPause3': skippingPause3,
-      'skippingFailureAttempts': skippingFailureAttempts,
-      'kneeBend': kneeBend,
-      'plank': plank,
-      'pushup': pushup,
-      'blackJeff': blackJeff,
-      'situps': situps,
-      'dips': dips
-  };
-  }
-
-  void addPainItem(Pain item) {
-    painDataItems.add(item);
-  }
-
-  void removePainItemAt(int index) {
-    painDataItems.removeAt(index);
+      'screeningData' : screeningData.toJson(),
+      'userStatus' : userStatus.toJson()
+    };
   }
 
   String getBirthdayAsString() {
@@ -382,7 +258,7 @@ class User {
   }
 
   String getNormalBMI() {
-    BMI bmi = new BMI();
+    BMI bmi = BMI();
 
     if (gender == 'weiblich') {
       return bmi.getBMIRange('f', getAgeAsInt());
