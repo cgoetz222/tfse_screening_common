@@ -6,6 +6,9 @@ class Constants {
 
   // names of the used files
   static const String userDataJSONFilename = "userJSONData.json";
+  static const String userWarmupsJSONFilename = "warmupsJSONData.json";
+  static const String userMainWorkoutsJSONFilename = "mainWorkoutsJSONData.json";
+  static const String userStretchingsJSONFilename = "stretchingsJSONData.json";
   static const String userImageFromFront = "front.jpg";
   static const String userImageFromBack = "back.jpg";
   static const String userImageFromSite = "site.jpg";

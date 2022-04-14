@@ -20,7 +20,7 @@ class UserExerciseItem {
     if (json['exerciseItem'] != null) {
       exercise = Exercise.fromJson('', json['exerciseItem']);
     } else {
-      exercise = Exercise(0, '', '', 0, 0, 0, 0.0, '', [], ExerciseConfiguration(true, true, true, true));
+      exercise = Exercise(0, '', '', 0, 0, 0, 0.0, '', [], ExerciseConfiguration(true, true, true, true, true));
     }
 
     return UserExerciseItem(

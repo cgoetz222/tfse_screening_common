@@ -74,4 +74,18 @@ class TFSEStyles {
       color:   TFSEColors.cardTextFieldColor,
       fontWeight: FontWeight.normal
   );
+
+  // drag & drop list
+  static const TextStyle drapAndDropListContentStyle = TextStyle(
+      fontSize: 14.0,
+      color: TFSEColors.cardBackground,
+      fontWeight: FontWeight.bold
+  );
+
+  // button
+  static const TextStyle buttonTextStyle = TextStyle(
+      fontSize: 14.0,
+      color: TFSEColors.buttonTextColor,
+      fontWeight: FontWeight.bold
+  );
 }

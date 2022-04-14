@@ -3,13 +3,15 @@ class ExerciseConfiguration {
   bool showRepeats = false;
   bool showTime = false;
   bool showRatings = false;
+  bool timeInSeconds;
 
-  ExerciseConfiguration(this.showSets, this.showRepeats, this.showTime, this.showRatings);
+  ExerciseConfiguration(this.showSets, this.showRepeats, this.showTime, this.timeInSeconds, this.showRatings);
 
   factory ExerciseConfiguration.fromJson(Map<String, dynamic> json) {
     bool showSets;
     bool showRepeats;
     bool showTime;
+    final bool timeInSeconds;
     bool showRatings;
 
     if(json['showSets'] != null) {
@@ -27,6 +29,11 @@ class ExerciseConfiguration {
     } else {
       showTime = true;
     }
+    if(json['timeInSeconds'] != null) {
+      timeInSeconds = json['timeInSeconds'] as bool;
+    } else {
+      timeInSeconds = true;
+    }
     if(json['showRatings'] != null) {
       showRatings = json['showRatings'] as bool;
     } else {
@@ -37,14 +44,16 @@ class ExerciseConfiguration {
         showSets,
         showRepeats,
         showTime,
+        timeInSeconds,
         showRatings
     );
   }
 
   Map<String, dynamic> toJson() => {
-  'showSets' : showSets,
-  'showRepeats': showRepeats,
-  'showTime': showTime,
-  'showRatings': showRatings,
+    'showSets' : showSets,
+    'showRepeats': showRepeats,
+    'showTime': showTime,
+    'timeInSeconds': timeInSeconds,
+    'showRatings': showRatings,
   };
 }

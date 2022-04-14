@@ -13,12 +13,13 @@ class Exercise {
   final int categoryID;
   final String category;
   String name;
-  final int setsMin;
-  final int setsMax;
-  final int repeats;
-  final double time;
+  int setsMin;
+  int setsMax;
+  int repeats;
+  double time;
+
   List<ExerciseRating> ratings = [];
-  ExerciseConfiguration config = ExerciseConfiguration(true, true, true, true);
+  ExerciseConfiguration config = ExerciseConfiguration(true, true, true, true, true);
 
   Exercise(this.categoryID, this.category, this.name, this.setsMin, this.setsMax, this.repeats, this.time, this.dbId, this.ratings, this.config);
 
@@ -68,7 +69,7 @@ class Exercise {
       repeats = 0;
     }
     if(jsonMap['time'] != null) {
-      time = jsonMap['time'] as double;
+      time = double.parse(jsonMap['time']);
     } else {
       time = 0;
     }
@@ -80,7 +81,7 @@ class Exercise {
     if(jsonMap['configuration'] != null) {
       config = ExerciseConfiguration.fromJson(jsonMap['configuration']);
     } else {
-      config = ExerciseConfiguration(true, true, true, true);
+      config = ExerciseConfiguration(true, true, true, true, true);
     }
 
     return Exercise(
@@ -103,7 +104,7 @@ class Exercise {
     'setsMin': setsMin,
     'setsMax': setsMax,
     'repeats': repeats,
-    'time': time,
+    'time': time.toString(),
     'ratings': jsonEncode(ratings.map((e) => e.toJson()).toList()),
     'configuration': config.toJson()
   };

@@ -19,9 +19,23 @@ class TFSEColors {
 
   static const MaterialColor tfseSwatchColor = MaterialColor(0xFFFE6C61, colorRed);
   static const Color tfseBackgroundColor = Color(0xFF2C3338);
-  static const Color tfseCardBackgroundColor = Color(0xFF121212);
+  static const Color scaffoldBackgroundColor = Color(0xFF121212);
   static const Color tfseHeaderTextColor = Color(0xFFFFFFFF);
   static const Color tfseTextFieldLabelColor = Color(0xFFFE6C61);
+
+  // drag & drop list
+  static const Color tfseDragAndDropHeaderBackgroundColor = Color(0xFF5E96BA);
+  static const Color tfseDragAndDropItemBackgroundColor = Color(0xFFFAFAFA);
+
+  // text input field
+  static const Color textFieldBackgroundColor = Color(0xDDFAFAFA);
+  static const Color textFieldFocusedBorderColor = Color(0xFF5E96BA);
+  static const Color textFieldCursorColor = Color(0xFF5E96BA);
+  static const Color textFieldTextColor = Color(0xFF2F2F2F);
+  static const Color textFieldBorder = Color(0xFF444444);
+
+  // radio button
+  static const Color radioButtonActiveColor = Color(0xFF5E96BA);
 
   // pain scale
   static const Color painScale0 = Color(0xFF73Af3A);
@@ -36,6 +50,7 @@ class TFSEColors {
   static const Color menuCardGreen = Color(0xFF96DA45);
   static const Color menuCardOrange = Color(0xFFECA182);
   static const Color menuCardBlue = Color(0xFF2AC3FF);
+  static const Color menuCardYellow = Color(0xFFFFCB2A);
 
   // card dark
   static const Color cardHeader = Color(0xFF444444);
@@ -44,4 +59,8 @@ class TFSEColors {
   static const Color cardBodyText = Color(0xFFFAFAFA);
   static const Color cardLabelColor = Color(0xFFFAFAFA);
   static const Color cardTextFieldColor = Color(0xFFAAAAAA);
+
+  // button
+  static const Color buttonBackgroundColor = Color(0xFF2F2F2F);
+  static const Color buttonTextColor = Color(0xFF16A7E8);
 }
