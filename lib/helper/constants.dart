@@ -1,14 +1,23 @@
 class Constants {
   Constants._(); // this basically makes it so you can instantiate this class
 
+  // default date
+  static DateTime defaultDateTime = DateTime(1900,1,1,0,0,0,0,0);
+
   // turn debugging on/off
   static const bool debugMode = true;
 
+  // sizes
+  static const double dividedCircularOutlinePainterSize = 32.0;
+  static const double dividedCircularOutlinePainterPadding = 2.0;
+
   // names of the used files
   static const String userDataJSONFilename = "userJSONData.json";
-  static const String userWarmupsJSONFilename = "warmupsJSONData.json";
-  static const String userMainWorkoutsJSONFilename = "mainWorkoutsJSONData.json";
-  static const String userStretchingsJSONFilename = "stretchingsJSONData.json";
+  static const String trainerWarmupsJSONFilename = "trainerWarmupsJSONData.json";
+  static const String trainerMainWorkoutsJSONFilename = "trainerMainWorkoutsJSONData.json";
+  static const String trainerStretchingsJSONFilename = "trainerStretchingsJSONData.json";
+  static const String userWorkoutsJSONFilename = "userWorkoutsJSONData.json";
+  //static const String userExerciseStatisticDataJSONFilename = "statisticDataJSONData.json";
   static const String userImageFromFront = "front.jpg";
   static const String userImageFromBack = "back.jpg";
   static const String userImageFromSite = "site.jpg";

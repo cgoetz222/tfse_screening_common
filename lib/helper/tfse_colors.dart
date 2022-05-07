@@ -17,7 +17,8 @@ class TFSEColors {
     900: Color(0xFFFE6C61),
   };
 
-  static const MaterialColor tfseSwatchColor = MaterialColor(0xFFFE6C61, colorRed);
+//  static const MaterialColor tfseSwatchColor = MaterialColor(0xFFFE6C61, colorRed);
+  static const MaterialColor tfseSwatchColor = MaterialColor(0xFF2A6137, colorRed);
   static const Color tfseBackgroundColor = Color(0xFF2C3338);
   static const Color scaffoldBackgroundColor = Color(0xFF121212);
   static const Color tfseHeaderTextColor = Color(0xFFFFFFFF);
@@ -48,9 +49,11 @@ class TFSEColors {
   // main menu cards
   static const Color menuCardLila = Color(0xFF7956FB);
   static const Color menuCardGreen = Color(0xFF96DA45);
+  static const Color menuCardLightGreen = Color(0xFFBAF692);
   static const Color menuCardOrange = Color(0xFFECA182);
   static const Color menuCardBlue = Color(0xFF2AC3FF);
   static const Color menuCardYellow = Color(0xFFFFCB2A);
+  static const Color menuCardGrey = Color(0xFF444444);
 
   // card dark
   static const Color cardHeader = Color(0xFF444444);
@@ -63,4 +66,23 @@ class TFSEColors {
   // button
   static const Color buttonBackgroundColor = Color(0xFF2F2F2F);
   static const Color buttonTextColor = Color(0xFF16A7E8);
+  static const Color buttonCircleGoColor = Color(0xFFFE6C61);
+  static const Color buttonCircleOkColor = Color(0xFFBAF692);
+
+  // progress indicator
+  static const Color progressIndicatorActiveColor = Color(0xFF16A7E8);
+  static const Color progressIndicatorInactiveColor = scaffoldBackgroundColor;
+
+  // text for exercise teaser
+  static const Color textExerciseTeaserOrange = Color(0xFFFD9E10);
+  static const Color textExerciseTeaserLightBlue = Color(0xFFB3E1F9);
+  static const Color textExerciseTeaserLightGreen = Color(0xFFBAF692);
+
+  // timer
+  static const Color progressIndicatorTimerActiveColor = Color(0xFF16A7E8);
+
+  // statistic
+  static const Color statisticCalendarHeaderBackgroundColor = Color(0xFFE4E7EB);
+  static const Color statisticCalendarBackgroundColor = Color(0xFFF5F7F9);
+  static const Color statisticCalendarActiveDayColor = Color(0xFF406599);
 }
